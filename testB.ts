@@ -1,10 +1,10 @@
 // Implementation B
 
 import APICaller from "./src/api/APICaller";
-import APIPayload from "./src/api/interface/APIPayload";
-import UserInfo from "./src/api/UserInfo/interface/UserInfo";
-import UserStatus from "./src/api/UserInfo/interface/UserStatus";
-import UserType from "./src/api/UserInfo/interface/UserType";
+import APIPayload from "./src/api/types/APIPayload";
+import UserInfo from "./src/api/UserInfo/types/UserInfo";
+import UserStatus from "./src/api/UserInfo/types/UserStatus";
+import UserType from "./src/api/UserInfo/types/UserType";
 
 // API Adapter file
 const API = new APICaller();

@@ -1,6 +1,6 @@
 import UserStatus from "./UserStatus";
 import UserType from "./UserType";
-import APIResponse from "../../interface/APIResponse";
+import APIResponse from "../../types/APIResponse";
 
 interface UserInfo extends APIResponse {
   data: {

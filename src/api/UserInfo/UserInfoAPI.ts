@@ -1,8 +1,8 @@
 import APICaller from "../APICaller";
-import APIPayload from "../interface/APIPayload";
+import APIPayload from "../types/APIPayload";
 import { Method } from "axios";
 import RequestLimit from "../../decorator/RequestLimit";
-import UserInfo from "./interface/UserInfo";
+import UserInfo from "./types/UserInfo";
 
 class UserInfoAPI extends APICaller implements APIPayload {
   url = `${this.baseURL}/api/user/info`;

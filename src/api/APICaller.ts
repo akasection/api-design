@@ -1,11 +1,11 @@
 import axios, { AxiosResponse } from 'axios';
 
 import RequiresToken from "../decorator/RequiresToken";
-import APIPayload from "./interface/APIPayload";
-import APIResponse from "./interface/APIResponse";
-import AggregatePayload, { AggregateScope } from './interface/AggregatePayload';
-import { AggregateData } from "./interface/AggregateData";
-import IAPICaller from './interface/IAPICaller';
+import APIPayload from "./types/APIPayload";
+import APIResponse from "./types/APIResponse";
+import AggregatePayload, { AggregateScope } from './types/AggregatePayload';
+import { AggregateData } from "./types/AggregateData";
+import IAPICaller from './types/IAPICaller';
 
 class APICaller implements IAPICaller {
   baseURL: string;
