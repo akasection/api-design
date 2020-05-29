@@ -7,7 +7,7 @@
     "allowSyntheticDefaultImports": true,
     "strictNullChecks": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "baseUrl": "./"
   }
-
 }

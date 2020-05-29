@@ -1,0 +1,13 @@
+{
+  "typescript.implementationsCodeLens.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "javascript.format.semicolons": "insert",
+  "typescript.format.insertSpaceAfterTypeAssertion": true,
+  "typescript.format.semicolons": "insert",
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": true
+}
