@@ -1,4 +1,4 @@
-import { Basic } from "./Response";
+import { Basic } from "./Basic";
 
 interface Meta extends Basic {
   http_status: number;

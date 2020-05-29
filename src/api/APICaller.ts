@@ -1,16 +1,18 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import RequiresToken from "../decorator/RequiresToken";
-import APIPayload from "../interface/APIPayload";
-import APIResponse from "../interface/APIResponse";
-import AggregatePayload, { AggregateData, AggregateScope } from '../interface/AggregatePayload';
+import APIPayload from "./interface/APIPayload";
+import APIResponse from "./interface/APIResponse";
+import AggregatePayload, { AggregateScope } from './interface/AggregatePayload';
+import { AggregateData } from "./interface/AggregateData";
+import IAPICaller from './interface/IAPICaller';
 
-class APICaller implements APICaller {
+class APICaller implements IAPICaller {
   baseURL: string;
 
   @RequiresToken
-  async fetch<T>(apiPayload: APIPayload): Promise<APIResponse<T>> {
-    const response = await axios(`${this.baseURL}${apiPayload.url}`, {
+  async fetch<T extends APIResponse> (apiPayload: APIPayload): Promise<T> {
+    const response: AxiosResponse<T> = await axios(`${this.baseURL}${apiPayload.url}`, {
       method: apiPayload.method,
       params: {
         access_token: "", // fetch and synced everytime callAPI is called
@@ -25,7 +27,7 @@ class APICaller implements APICaller {
     return response.data;
   }
 
-  async fetchAggregate<T extends APIPayload>(fetchPayload: Record<string, [T, AggregateScope]>): Promise<APIResponse<T>> {
+  async fetchAggregate<T extends APIResponse>(fetchPayload: Record<string, [APIPayload, AggregateScope]>): Promise<T> {
     const aggregateData: Record<string, AggregateData> = Object
       .entries(fetchPayload)
       .reduce((acc, [key, [payload, scope]]) => ({
@@ -49,7 +51,7 @@ class APICaller implements APICaller {
       body: compiledBody,
       headers: compiledHeader
     };
-    const resp: APIResponse<T> = await this.fetch<T>(compiledPayload);
+    const resp: T = await this.fetch<T>(compiledPayload);
     return resp;
   }
 }

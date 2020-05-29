@@ -1,25 +1,23 @@
-import APICaller from "../../model/APICaller";
-import APIPayload from "../../interface/APIPayload";
+import APICaller from "../APICaller";
+import APIPayload from "../interface/APIPayload";
 import { Method } from "axios";
-import RequestLimit from "../../decorator/RequestLimiter";
-import UserInfo from "./UserInfo";
-import APIResponse from "../../interface/APIResponse";
+import RequestLimit from "../../decorator/RequestLimit";
+import UserInfo from "./interface/UserInfo";
 
 class UserInfoAPI extends APICaller implements APIPayload {
-  url: string;
-  method: Method;
+  url = `${this.baseURL}/api/user/info`;
+  method: Method = "GET";
 
   constructor() {
     super();
-    this.url = `${this.baseURL}/api/user/info`;
-    this.method = "GET";
   }
 
   @RequestLimit("xhr_user")
   async get(): Promise<UserInfo> {
-    const resp: APIResponse<UserInfo> = await super.fetch<UserInfo>(this);
-    // Add some post reflections
-    return resp.data;
+    const resp: UserInfo = await super.fetch<UserInfo>(this);
+    // TODO: Add some data transformation here
+
+    return resp;
   }
 }
 
